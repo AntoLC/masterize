@@ -17,6 +17,8 @@ var stripeRouter = require('./routes/stripe');
 var usersRouter = require('./routes/users');
 
 var app = express();
+// var port = normalizePort(process.env.PORT || '3000');
+// app.set('port', port);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,10 +36,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
 if(process.env.NODE_ENV === 'production'){
-  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.use(express.static(path.join(__dirname, '../masterize/build')));
 
   app.get('*', function(req, res){
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../masterize/build', 'index.html'));
   });
 }
 
