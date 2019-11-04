@@ -1,0 +1,19 @@
+version: '3'
+
+volumes: 
+  node_modules_masterize_backend:
+
+services:
+  nodejs-backend:
+    container_name: masterize_backend
+    build: .
+    volumes: 
+      - .:/home/app/masterize_backend/
+      - ./entrypoint-compose.sh:/entrypoint-compose.sh
+      - node_modules_masterize_backend:/home/app/masterize_backend/node_modules/
+    ports:
+      - "2999:3000"
+    entrypoint: "/entrypoint-compose.sh"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true

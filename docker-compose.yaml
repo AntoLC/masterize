@@ -1,0 +1,34 @@
+version: '3'
+
+volumes: 
+  node_modules_masterize_frontend:
+  node_modules_masterize_backend:
+
+services:
+  masterize-backend:
+    container_name: ${CONTAINER_BACKEND_NAME}
+    build: ./${PATH_BACKEND_NAME}
+    volumes: 
+      - ./${PATH_BACKEND_NAME}:/home/app/${APP_BACKEND_NAME}/
+      - ./${PATH_BACKEND_NAME}/entrypoint-compose.sh:/entrypoint-compose.sh
+      - node_modules_masterize_backend:/home/app/${APP_BACKEND_NAME}/node_modules/
+    ports:
+      - "${PORT_BACKEND}:3000"
+    entrypoint: "/entrypoint-compose.sh"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+
+  masterize-frontend:
+    container_name: ${CONTAINER_FRONTEND_NAME}
+    build: ./${PATH_FRONTEND_NAME}
+    volumes: 
+      - ./${PATH_FRONTEND_NAME}:/home/app/${APP_FRONTEND_NAME}/
+      - ./${PATH_FRONTEND_NAME}/entrypoint-compose.sh:/entrypoint-compose.sh
+      - node_modules_masterize_frontend:/home/app/${APP_FRONTEND_NAME}/node_modules/
+    ports:
+      - "${PORT_FRONTEND}:3000"
+    entrypoint: "/entrypoint-compose.sh"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true

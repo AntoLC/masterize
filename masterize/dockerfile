@@ -1,0 +1,22 @@
+FROM node:10.16-alpine
+
+ENV NAME_APP masterize
+ENV PATH_APP /home/app/
+ENV FULL_PATH $NAME_APP$PATH_APP
+
+WORKDIR $FULLPATH/
+COPY . .
+WORKDIR $PATH_APP
+
+RUN apk add --update git
+RUN apk add --update curl
+RUN apk add --update bash
+RUN apk add --update nano
+RUN if [ ! -e ${FULL_PATH}/src/App.js ]; then npx create-react-app $NAME_APP ; fi
+#RUN npx create-react-app $NAME_APP
+COPY . .
+WORKDIR ${FULL_PATH}/
+
+EXPOSE 3000
+
+
