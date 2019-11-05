@@ -1,16 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import FormInput from "../form-input/formInput.cpnt";
 import CustomButton from "../custom-button/custom-button";
 import {STYLE_INVERTED} from '../custom-button/custom-button.styles';
 import "./sign-up.styles.scss";
+import {auth} from '../../firebase/firebase.utils';
 
-import {connect} from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import {signUpStart, setErrorMessage} from '../../redux/user/users.actions';
-import {selectSignUpError} from '../../redux/user/user.selectors';
-
-const SignUp = ({signUp, error_message, setErrorMessage}) => {
-    const [error, setError] = useState('');
+const SignUp = () => {
     const [user, setUser] = useState({
         displayName: '',
         email: '',
@@ -18,17 +13,7 @@ const SignUp = ({signUp, error_message, setErrorMessage}) => {
         confirmPassword: '',
     });
     const { displayName, email, password, confirmPassword} = user;
-
-    useEffect(() => {
-        console.debug('error_message', error_message);
-        
-        setError(error_message);
-        if(error_message){
-            setTimeout(() => {
-                setErrorMessage('');
-            }, 5000);
-        }
-    }, [error_message]);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async event => {
         event.preventDefault();
@@ -38,7 +23,12 @@ const SignUp = ({signUp, error_message, setErrorMessage}) => {
             return;
         }
 
-        signUp({displayName, email, password});
+        try {
+            await auth.createUserWithEmailAndPassword(email, password);
+        } catch (error) {
+            setErrorMessage(error.message);
+            setTimeout(()=> setErrorMessage(''), 5000)
+        }
     }
 
     const handleChange = event => {
@@ -80,9 +70,7 @@ const SignUp = ({signUp, error_message, setErrorMessage}) => {
                     handleChange={handleChange}
                     required
                     label="Confirm Password"/>
-                {
-                    <p className="error">{error ? error : '' }</p>
-                }
+                <p className="error">{errorMessage}</p>
                 <div className='buttons'>
                     <CustomButton typeStyle={STYLE_INVERTED} type="submit">Sign Up</CustomButton>
                 </div>
@@ -91,11 +79,4 @@ const SignUp = ({signUp, error_message, setErrorMessage}) => {
     );
 }
 
-const mapStateToProps = createStructuredSelector({
-    error_message : selectSignUpError,
-});
-const mapDispatchToProps = dispatch => ({
-    signUp: user => dispatch(signUpStart(user)),
-    setErrorMessage: message => dispatch(setErrorMessage(message))
-});
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default SignUp;

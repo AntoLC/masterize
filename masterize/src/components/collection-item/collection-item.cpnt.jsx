@@ -1,16 +1,13 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React, {useContext} from 'react';
 import './collection-item.styles.scss';
 import CustomButton from '../custom-button/custom-button';
 import {STYLE_INVERTED} from '../custom-button/custom-button.styles';
 
-import { connect } from 'react-redux';
-import { addCartItems } from '../../redux/cart/cart.actions';
+import {CartContext} from '../../providers/cart/cart.provider'; 
 
+const CollectionItem = ({ item }) => {
+    const {addItem} = useContext(CartContext);
 
-const CollectionItem = ({ addCartItems, item, history, match}) => {
-    //console.debug(addCartItems)
-    //onClick={() => history.push(`${match.url}${item.id}`)}
     return (
         <div className='collection-item'>
             <div
@@ -21,12 +18,9 @@ const CollectionItem = ({ addCartItems, item, history, match}) => {
                 <span className="name">{item.name.toUpperCase()}</span>
                 <span className="price">{item.price}$</span>
             </div>
-            <CustomButton className="custom-button" typeStyle={STYLE_INVERTED} onClick={() => addCartItems(item)}>Add to cart</CustomButton>
+            <CustomButton className="custom-button" typeStyle={STYLE_INVERTED} onClick={() => addItem(item)}>Add to cart</CustomButton>
         </div>
     );
 };
 
-const mapDispatchToProps = dispatch => ({
-    addCartItems: (item) => dispatch(addCartItems(item))
-});
-export default connect(null, mapDispatchToProps)(CollectionItem);
+export default CollectionItem;

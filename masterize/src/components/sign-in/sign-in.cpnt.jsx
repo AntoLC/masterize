@@ -1,24 +1,27 @@
 import React, {useState} from "react";
-import {connect} from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import {googleSignInStart, emailSignInStart} from '../../redux/user/users.actions';
-import {selectAuthError} from '../../redux/user/user.selectors';
+import {signInWithGoogle, signInWithEmailAndPassword} from '../../firebase/firebase.utils';
 
 import FormInput from "../form-input/formInput.cpnt";
 import CustomButton from "../custom-button/custom-button";
 import {STYLE_GOOGLE} from '../custom-button/custom-button.styles';
 import "./sign-in.scss";
 
-const SignIn = ({emailSignInStart, error_message, googleSignInStart}) => {
+const SignIn = () => {
     const [userCredentials, setCredentials] = useState({
         email: '',
         password: ''
     });
+    const [errorMessage, setErrorMessage] = useState('');
     const { email, password } = userCredentials;
 
     const handleSubmit = async event => {
         event.preventDefault();
-        emailSignInStart(email, password);
+        try {
+            await signInWithEmailAndPassword(email, password);
+        } catch (error) {
+            setErrorMessage(error.message);
+            setTimeout(()=> setErrorMessage(''), 5000)
+        }
     }
 
     const handleChange = event => {
@@ -46,13 +49,13 @@ const SignIn = ({emailSignInStart, error_message, googleSignInStart}) => {
                     handleChange={handleChange}
                     required
                     label="Password"/>
-                <p className="error">{error_message ? error_message : '' }</p>
+                <p className="error">{errorMessage ? errorMessage : '' }</p>
                 <div className='buttons'>
                     <CustomButton>Sign In</CustomButton>
                     <CustomButton 
                         type='button' 
                         typeStyle={STYLE_GOOGLE} 
-                        onClick={googleSignInStart}>
+                        onClick={signInWithGoogle}>
                         Sign in with Google
                     </CustomButton>
                 </div>
@@ -61,11 +64,4 @@ const SignIn = ({emailSignInStart, error_message, googleSignInStart}) => {
     );
 }
 
-const mapStateToProps = createStructuredSelector({
-    error_message : selectAuthError,
-});
-const mapDispatchToProps = dispatch => ({
-    googleSignInStart: () => dispatch(googleSignInStart()),
-    emailSignInStart: (email, password) => dispatch(emailSignInStart({email, password}))
-});
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default SignIn;

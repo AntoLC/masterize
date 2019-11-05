@@ -1,17 +1,9 @@
 
-import React, {useEffect} from 'react';
+import React from 'react';
 import CollectionContainer from '../../components/collections-container/collections-container.cpnt';
-import { connect } from 'react-redux';
-import { fetchCollectionsStart } from '../../redux/shop/shop.actions';
 
-const Shop = ({match, fetchCollectionsStart}) => {
+const Shop = ({match}) => {
     const {category} = match.params;
-
-    useEffect(() => {
-        fetchCollectionsStart();
-    },[fetchCollectionsStart]);
-
-    //const {category} = this.props.match.params;
     return(
         <div className='shop-page'>
             <CollectionContainer category={category}/>
@@ -19,7 +11,4 @@ const Shop = ({match, fetchCollectionsStart}) => {
     )
 }
 
-const mapDispatchToProps = dispatch => ({
-    fetchCollectionsStart: () => dispatch(fetchCollectionsStart()) 
-});
-export default connect(null, mapDispatchToProps)(Shop); 
+export default Shop; 
