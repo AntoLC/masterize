@@ -2,6 +2,7 @@
 Advanced test to practice all the last functionalities of React / NodeJS.
 - Heroku
 - Hooks
+- Context API
 - Redux
 - GraphQL
 - Firebase
