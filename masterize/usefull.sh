@@ -2,6 +2,9 @@ yarn --check-files # rebuild node_module
 yarn upgrade package-name # Update 1 package
 yarn add package-name
 
+#Apollo
+yarn add apollo-boost react-apollo graphql
+
 apk add --update git # ALPINE Command
 
 # Create APP on heroku
