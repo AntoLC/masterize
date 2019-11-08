@@ -11,7 +11,6 @@ const Shop = ({match, fetchCollectionsStart}) => {
         fetchCollectionsStart();
     },[fetchCollectionsStart]);
 
-    //const {category} = this.props.match.params;
     return(
         <div className='shop-page'>
             <CollectionContainer category={category}/>

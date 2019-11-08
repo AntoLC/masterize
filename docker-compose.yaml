@@ -28,7 +28,12 @@ services:
       - node_modules_masterize_frontend:/home/app/${APP_FRONTEND_NAME}/node_modules/
     ports:
       - "${PORT_FRONTEND}:3000"
-    entrypoint: "/entrypoint-compose.sh"
+    #entrypoint: "/entrypoint-compose.sh"
+    command: |
+      /bin/bash -c "
+        #yarn --check-files
+        yarn start
+        /bin/bash || exit 0"
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true

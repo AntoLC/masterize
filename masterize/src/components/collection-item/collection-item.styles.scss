@@ -21,6 +21,12 @@
     top: 255px;
 
     transition: opacity 0.2s ease-in;
+
+    @media screen and (max-width: 800px){
+      opacity: 0.9;
+      min-width: unset;
+      padding: 0 10px;
+    }
   }
 
   &:hover {
@@ -31,6 +37,20 @@
     .custom-button {
       opacity: 0.85;
       display: flex;
+    }
+  }
+
+  @media screen and (max-width: 800px){
+    width: 40vw;
+
+    &:hover {
+      .image {
+        opacity: unset;
+      }
+  
+      .custom-button {
+        opacity: unset;
+      }
     }
   }
 
