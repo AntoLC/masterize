@@ -1,0 +1,25 @@
+version: '3'
+
+volumes: 
+  node_modules_masterize_apollo_frontend:
+
+services:
+  frontend:
+    container_name: masterize_apollo_frontend
+    build: .
+    volumes: 
+      - .:/home/app/masterize_apollo/
+      - ./entrypoint-compose.sh:/entrypoint-compose.sh
+      - node_modules_masterize_apollo_frontend:/home/app/masterize_apollo/node_modules/
+    ports:
+      - "3000:3000"
+    #entrypoint: "/entrypoint-compose.sh"
+    command: |
+      /bin/bash -c "
+        #yarn --check-files
+        yarn start
+        /bin/bash || exit 0
+      "
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true

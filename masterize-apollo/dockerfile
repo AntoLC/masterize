@@ -1,0 +1,23 @@
+FROM node:10.16-alpine
+
+ENV NAME_APP masterize_apollo
+ENV PATH_APP /home/app/
+ENV FULL_PATH ${PATH_APP}${NAME_APP}
+
+WORKDIR ${FULL_PATH}/
+COPY . .
+WORKDIR ${PATH_APP}
+
+# RUN apk add --update git
+# RUN apk add --update curl
+RUN apk add --update bash
+RUN apk add --update nano
+RUN if [ ! -e ${FULL_PATH}/src/App.js ]; then npx create-react-app ${NAME_APP} ; fi
+WORKDIR ${FULL_PATH}/
+#RUN yarn upgrade
+
+ADD ./entrypoint-compose.sh /entrypoint-compose.sh
+
+EXPOSE 3000
+
+
