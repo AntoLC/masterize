@@ -8,6 +8,7 @@ if(process.env.NODE_ENV !== 'production')
   require('dotenv').config();
 
 var path = require('path');
+const compression = require('compression');
 var cookieParser = require('cookie-parser');
 
 var logger = require('morgan'); 
@@ -24,6 +25,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(compression);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
