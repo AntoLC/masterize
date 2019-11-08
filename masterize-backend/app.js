@@ -8,7 +8,7 @@ if(process.env.NODE_ENV !== 'production')
   require('dotenv').config();
 
 var path = require('path');
-const compression = require('compression');
+var compression = require('compression');
 var cookieParser = require('cookie-parser');
 
 var logger = require('morgan'); 
