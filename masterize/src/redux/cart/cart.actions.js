@@ -19,3 +19,7 @@ export const updateQuantity = (item_id, qty) => ({
 export const clearCart = () => ({
     type: CartActionTypes.CLEAR_CART,
 });
+export const ActionImportCart = (carts) => ({
+    type: CartActionTypes.IMPORT_CART,
+    carts: carts
+});

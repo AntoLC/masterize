@@ -1,5 +1,11 @@
 import * as cloneDeep from 'lodash/cloneDeep';
-import {addCartAndDocuments} from '../../firebase/firebase.utils';
+import {
+    addCartAndDocuments, 
+    updateQtyCart, 
+    removeCart, 
+    removeAllCart, 
+    selectCart} 
+    from '../../firebase/firebase.cart';
 
 
 export const addItemToCart = (cart_items, item) => {
@@ -11,9 +17,11 @@ export const addItemToCart = (cart_items, item) => {
             ? [...cart_items, newItem]
             : [newItem];
 
-        addCartAndDocuments("", newItem); 
+        addCartAndDocuments("carts", newItem); 
         return new_cart;
     }
+
+    updateQtyCart(cart_items[itemIndex], cart_items[itemIndex].qty+1);
 
     cart_items[itemIndex].qty += 1;
     return [...cart_items];
@@ -22,8 +30,32 @@ export const addItemToCart = (cart_items, item) => {
 export const updateQtyToCart = (cart_items, item_id, qty) => {
     const itemIndex = cart_items.findIndex((_item => _item.id === item_id));
     
-    if(itemIndex !== -1)
+    if(itemIndex !== -1){
         cart_items[itemIndex].qty = qty;
+        updateQtyCart(cart_items[itemIndex], qty);
+    }
 
     return cloneDeep(cart_items);
+}
+
+export const removeItemToCart = (cart_items, item_id) => {
+    removeCart(item_id);
+    return cart_items.filter((_item => _item.id !== item_id));
+}
+
+export const clearCart = () => {
+    removeAllCart();
+    return [];
+}
+
+export const importCart = async () => {
+    const snapshotCartItem = await selectCart();
+    if(! snapshotCartItem) return {};
+
+    const arrayCart = [];
+    snapshotCartItem.forEach(doc => {
+        arrayCart.push(doc.data())
+    });
+
+    return arrayCart;
 }
