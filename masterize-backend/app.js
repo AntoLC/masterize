@@ -25,7 +25,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(compression);
+//app.use(compression);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -44,6 +44,12 @@ if(process.env.NODE_ENV === 'production'){
     res.sendFile(path.join(__dirname, '../masterize/build', 'index.html'));
   });
 }
+
+/*  For WebApp
+app.get('/service-worker.js', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'build', 'service-worker.js'));
+});
+*/
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

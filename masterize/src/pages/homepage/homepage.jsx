@@ -1,11 +1,17 @@
 
-import React from 'react';
+import React, {Profiler} from 'react';
 import MenuContainer from '../../components/menu-container/menu-container';
 import { HomePageContainer } from './homepage.styles'
 
 const Homepage = () => (
     <HomePageContainer>
-        <MenuContainer/>
+        <Profiler 
+            id='Directory' 
+            onRender={(id, phase, actualDuration) => {
+            console.log({id, phase, actualDuration});
+            }}>
+            <MenuContainer/>
+        </Profiler>
     </HomePageContainer>
 )
 
