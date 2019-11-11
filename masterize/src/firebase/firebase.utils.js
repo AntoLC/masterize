@@ -42,6 +42,19 @@ export const addCollectionAndDocuments = async (collectionKey, objectToAdd) => {
     return await batch.commit();
 };
 
+export const addCartAndDocuments = async (collectionKey, cartToAdd) => {
+    console.debug("addCartAndDocuments",cartToAdd);
+    //console.debug("addCartAndDocuments",auth.currentUser);
+    
+    try {
+        if(auth.currentUser.uid)
+            cartToAdd.userID = auth.currentUser.uid;
+    }
+    finally{
+        return firestore.collection('cart').doc().set(cartToAdd);
+    }
+};
+
 export const convertCollectionsSnapshotMap = (collections) => {
     const transformedCollection = collections.docs.map(doc => {
         const {title, items} = doc.data();

@@ -12,6 +12,9 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { checkUserSession } from './redux/user/users.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
+import { selectCollectionsForPreview } from './redux/shop/shop.selectors';
+
+import {addCollectionAndDocuments} from './firebase/firebase.utils';
 
 const Homepage = lazy(() => import('./pages/homepage/homepage'));
 const Shop = lazy(() => import('./pages/shop/shop.cpnt'));
@@ -19,7 +22,10 @@ const Sign = lazy(() => import('./pages/sign/sign.cpnt'));
 const CheckoutPage = lazy(() => import('./pages/checkout/checkout.cpnt'));
 //const Header = lazy(() => import('./components/header/header.cpnt'));
 
-const App = ({checkUserSession, currentUser}) => {
+const App = ({checkUserSession, currentUser, shopDataLocal}) => {
+  //console.debug(shopDataLocal.map(({title, items}) => ({title, items})));
+  //addCollectionAndDocuments('collections', shopDataLocal.map(({title, items}) => ({title, items})));
+ 
   useEffect(() => {
     checkUserSession();
   },[checkUserSession]);
@@ -46,7 +52,8 @@ const App = ({checkUserSession, currentUser}) => {
 }
  
 const mapStateToProps = createStructuredSelector({
-    currentUser: selectCurrentUser 
+  currentUser: selectCurrentUser,
+  shopDataLocal: selectCollectionsForPreview
 });
 const mapDispatchToProps = dispatch => ({
   checkUserSession: () => dispatch(checkUserSession())

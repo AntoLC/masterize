@@ -1,15 +1,17 @@
 import * as cloneDeep from 'lodash/cloneDeep';
+import {addCartAndDocuments} from '../../firebase/firebase.utils';
+
 
 export const addItemToCart = (cart_items, item) => {
-    
-    const itemIndex = cart_items 
-        ? cart_items.findIndex((_item => _item.id === item.id))
-        : -1;
+    const itemIndex = cart_items ? cart_items.findIndex((_item => _item.id === item.id)) : -1;
     if(itemIndex === -1){
-        const new_cart = (cart_items) 
-            ? [...cart_items, {...item, qty: 1}]
-            : [{...item, qty: 1}];
+        const newItem = {...item, qty: 1};
 
+        const new_cart = (cart_items) 
+            ? [...cart_items, newItem]
+            : [newItem];
+
+        addCartAndDocuments("", newItem); 
         return new_cart;
     }
 
