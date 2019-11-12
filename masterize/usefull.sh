@@ -4,6 +4,9 @@ yarn add package-name
 
 npm init -y # create empty package.json
 node .\script.js # to exute the script as python bleble.py
+npm install node-fetch # Fetch for nodeJS (callApi) -> Fetch is only browser side as ajax
+
+npm test -- --coverage # Test detail
 
 #Apollo
 yarn add apollo-boost react-apollo graphql

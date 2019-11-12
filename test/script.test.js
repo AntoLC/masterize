@@ -26,4 +26,4 @@ describe('googleSearch', () => {
     it('not more than 3 matches', () => {
         expect(googleSearch('.com', dbMock).length).toEqual(3);
     });
-});
+}); 
