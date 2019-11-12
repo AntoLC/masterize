@@ -2,6 +2,9 @@ yarn --check-files # rebuild node_module
 yarn upgrade package-name # Update 1 package
 yarn add package-name
 
+npm init -y # create empty package.json
+node .\script.js # to exute the script as python bleble.py
+
 #Apollo
 yarn add apollo-boost react-apollo graphql
 
