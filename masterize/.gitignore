@@ -1,3 +1,4 @@
 src/firebase/firebase.config.js
 node_modules/
 .env
+**/fontawesome/*

@@ -9,6 +9,7 @@ import { store , persistor }  from './redux/store';
 import * as serviceWorker from './serviceWorker';
 
 import './index.css';
+import './assets/fontawesome/css/all.css'; // Font-Awesome 
 import App from './App';
 
 // if(process.env.NODE_ENV !== 'production')

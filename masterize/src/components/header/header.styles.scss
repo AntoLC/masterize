@@ -3,12 +3,98 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 25px;
+  /*margin-bottom: 25px;*/
+  background: #d9f5ff;
+  background: linear-gradient(to right, #252525 0%, #092b38 100%);
+  /*top: -100px;
+  position: relative;*/
+
+  @media screen and (max-width: 800px){
+      padding: 10px;
+      height: 60px;
+      margin-bottom: 20px;
+  }
 
   .logo-container {
-    height: 100%;
-    width: 70px;
-    padding: 25px;
+    width: 45%;
+    display: flex;
+    margin: auto;
+    align-items: center;
+
+    @media screen and (max-width: 800px){
+        padding: 0px;
+        width: 50px;
+    }
+
+    .logo {
+      transition: all 0.3s ease-in-out;
+      
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &:hover circle{
+        animation-iteration-count: infinite;
+        animation-duration: 0.7s;
+        animation-direction: normal;
+        animation-timing-function: linear;
+        transition: all 0.3s ease-in-out;
+
+        &#Oval1{
+          animation-name: moveCircle1;
+        }
+        &#Oval2{
+          animation-name: moveCircle2;
+          animation-direction: alternate;
+        }
+        &#Oval3{
+          animation-name: moveCircle3;
+        }
+      }
+
+      @keyframes moveCircle2 {
+        0%   {
+          r:2;
+        }
+        100% {
+          r:0;
+        }
+      }
+      @keyframes moveCircle1 {
+        0%   {
+          cx: 2;
+          cy: 9;
+          fill: rgb(233, 30, 99);
+        }
+        50%  {
+          cx: 25;
+          cy: 15;
+          fill: rgb(236, 160, 186);
+        }
+        100% {
+          cx: 48;
+          cy: 9;
+          fill: rgb(255, 255, 255);
+        }
+      }
+      @keyframes moveCircle3 {
+        0%   {
+          cx: 48;
+          cy: 9;
+          fill: rgb(233, 30, 99);
+        }
+        50%  {
+          cx: 25;
+          cy: 2;
+          fill: rgb(236, 160, 186);
+        }
+        100% {
+          cx: 2;
+          cy: 9;
+          fill: rgb(255, 255, 255);
+        }
+      }
+    }
   }
 
   .options {
@@ -17,10 +103,41 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    padding-right: 10px;
 
-    .option {
-      padding: 10px 15px;
-      cursor: pointer;
+    @media screen and (max-width: 800px){
+      width: 80%;
     }
+
+    .container-option{
+      border-bottom: 2px solid #fff;
+      border-radius: 1px;
+      height: 30px;
+      margin: 8px;
+      width: 81px;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+
+      &:hover{
+        border-bottom: 2px solid #e91e63;
+      }
+
+      &:hover .option{
+        transform: rotate3d(1, 1, 1, 360deg);
+      }
+
+      .option {
+        transition: all 0.3s ease-in-out;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        padding: 0 0px;
+        margin: 6px;
+        font-size: 12px;
+        text-align: center;
+        display: inline-block;
+      }
+    }
+    
   }
 }
