@@ -3,6 +3,10 @@
   flex-direction: column;
   /*align-items: center;
   padding: 20px 80px;*/
+
+  &.loading{
+    filter: blur(4px);
+  }
 }
 .container-video{
   filter: blur(3px);

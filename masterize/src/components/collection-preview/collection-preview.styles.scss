@@ -1,7 +1,9 @@
 .collection-preview {
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  /*margin-bottom: 30px;*/
+  padding: 20px;
+  background: #ffffffaa;
 
   @media screen and (max-width: 800px){
     align-items: center;
@@ -9,7 +11,7 @@
 
   .title {
     font-size: 28px;
-    margin-bottom: 25px;
+    margin: 0;
   }
 
   .preview {

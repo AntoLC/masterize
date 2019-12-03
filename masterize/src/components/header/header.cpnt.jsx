@@ -37,8 +37,8 @@ const Header = ({currentUser, hidden, signOut}) => {
 
     useEffect(() => {
         (hidden)
-            ? TweenLite.to(".cart-dropdown", { duration: 2.5, ease: "elastic.out(1, 0.3)", top:"56px"})
-            : TweenLite.to(".cart-dropdown", { duration: 2.5, ease: "elastic.out(1, 0.3)", top:"-500px"});
+            ? TweenLite.to(".cart-dropdown", { duration: 2, ease: "elastic.out(1, 0.4)", top:"45px"})
+            : TweenLite.to(".cart-dropdown", { duration: 2, ease: "elastic.out(1, 0.4)", top:"-500px"});
     }, [hidden])
 
     return (

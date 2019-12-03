@@ -6,7 +6,6 @@
   flex-direction: column;
   padding: 20px;
   background-color: #fafafafa;
-  /*top: 56px;*/
   top: -400px;
   right: 11px;
   z-index: 5;
@@ -22,7 +21,7 @@
     height: 240px;
     display: flex;
     flex-direction: column;
-    /*overflow: scroll;*/
+    overflow: auto;
   }
 
   button {

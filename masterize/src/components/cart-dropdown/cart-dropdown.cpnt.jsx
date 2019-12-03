@@ -11,7 +11,7 @@ import { createStructuredSelector } from 'reselect';
 import { toggleCartHidden } from '../../redux/cart/cart.actions';
 
 const CartDropDown = ({dispatch, cart_items, history}) => {
-    console.debug(cart_items);
+    //console.debug(cart_items);
     return(
         <div className="cart-dropdown">
             <div className='cart-items'>

@@ -17,4 +17,12 @@ export const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
+
+    .app{
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: 50px;
+    }
 `;

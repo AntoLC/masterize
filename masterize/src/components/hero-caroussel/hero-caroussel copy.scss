@@ -1,0 +1,193 @@
+.carousel{
+    position: relative;
+
+    & .hidden{
+        opacity: 0;
+    }
+
+    .carousel__wrapper{
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+
+        .carousel__list_img {
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            transition: all 0.8s cubic-bezier(0.68, 0.0, 0.265, 1.00);
+            filter: brightness(0.4);
+
+            &.item1{
+                top:0px;
+            }
+            &.item2{
+                top:-100vh;
+            }
+            &.item3{
+                top:-200vh;
+            }
+        
+            .carousel__item{
+                list-style: none;
+                position: relative;
+            
+                .carousel__demo-content{
+                    height: 100vh;
+                    img{
+                        width:100vw;
+                        /*position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;*/
+                        margin: auto;
+                    }
+                }
+            }
+        }
+
+        .carousel__list_txt{
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            transition: all 1.5s ease-in-out;
+            width: 300vw;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            display: flex;
+
+            &.item1{
+                left:0px;
+            }
+            &.item2{
+                left:-100vw;
+            }
+            &.item3{
+                left:-200vw;
+            }
+        
+            .carousel__item{
+                list-style: none;
+                position: relative;
+                width: 100vw;
+                color: #fff;
+                font-size: 40px;
+                font-family: 'Permanent Marker', cursive;
+                padding: 0 3%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &#carousel__item2{
+                    font-family: 'Roboto', sans-serif;
+
+                    .carousel__list_txt_txt{
+                        width: 43%;
+                        p{
+                            span{
+                                color: #FFC107;
+                            }
+                        }
+                    }
+
+                    img{
+                        width: 250px;
+                        cursor: pointer;
+                    }
+                    &.active img{
+                        transform: rotate(-12deg);
+                    }
+                }
+
+                img{
+                    display: inline-block;
+                    width: 56%;
+                }
+
+                & img{
+                    transition: all 0.7s ease-in;
+                    transform: scale3d(0.6, 0.6, 1);
+                }
+
+                &.active img{
+                    transform: rotate(3.7deg);
+                }
+
+                .carousel__list_txt_txt{
+                    display: inline-block;
+                    width: 40%;
+
+                    p{
+                        padding:0;
+                        margin:0;
+                        text-shadow: 2px 2px 9px #222;
+    
+                        span{
+                            color: #E91E63;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .carousel__controls{
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        border-radius: 2px 0 0 2px;
+        background: #42424299;
+        z-index: 5;
+
+        ul{
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+
+            &:hover li{
+                height: 26px;
+                width: 26px;
+            }
+
+            li{
+                list-style: none;
+                height: 18px;
+                width: 18px;
+                border: 1px solid #607D8B;
+                border-radius: 30px;
+                margin: 12px;
+                position: relative;
+                cursor: pointer;
+                transition: all 0.4s ease-in;
+
+                &.active:before{
+                    background: #E91E63;
+                }
+
+                &#carousel__control2.active:before{
+                    background: #FFC107;
+                }
+
+                &:hover {
+                    transform: scale(1.5);
+                }
+
+                &:before{
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    height: 6px;
+                    width: 6px;
+                    border-radius: 100%;
+                    background: #fff;
+                    transform: translateY(-50%) translateX(-50%);
+                }
+            }
+        }
+    }
+}

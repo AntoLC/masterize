@@ -1,12 +1,11 @@
 .collections-overview {
-  display: flex;
-  flex-direction: column;
+  display: block;
+  padding: 5px 20px;
 }
 
 .items {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 10px;
+  display: block;
+  text-align: center;
 
   & .collection-item {
     margin-bottom: 30px;

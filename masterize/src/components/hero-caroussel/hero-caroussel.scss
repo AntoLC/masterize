@@ -1,5 +1,7 @@
 .carousel{
     position: relative;
+    border: 8px solid #0c0c0c;
+    height: 100vh;
 
     & .hidden{
         opacity: 0;
@@ -7,7 +9,7 @@
 
     .carousel__wrapper{
         position: relative;
-        height: 100vh;
+        height: 100%;
         overflow: hidden;
         padding: 0;
         margin: 0;
@@ -53,7 +55,7 @@
             margin: 0;
             position: absolute;
             transition: all 1.5s ease-in-out;
-            width: 300vw;
+            width: 200vw;
             align-items: center;
             justify-content: center;
             height: 100vh;
