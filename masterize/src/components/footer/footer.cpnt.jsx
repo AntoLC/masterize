@@ -27,8 +27,6 @@ const Footer = ({currentUser, signOut}) => {
 					{(currentUser 
                         ? <span className="option" onClick={ () => signOut() }>Sign out</span>
                         : <Link className="option" to='/sign'>Sign in</Link>)}
-					·
-					<Link className="option" to='/contact'>Contact</Link>
 				</p>
 
 			</div>

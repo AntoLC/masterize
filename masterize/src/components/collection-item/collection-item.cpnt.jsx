@@ -15,12 +15,15 @@ const CollectionItem = ({ addCartItems, item}) => {
     const cart_effect = (el) => {
         const parentDiv = el.target.parentElement;
         const imageEffect = parentDiv.querySelector('.collection-item-effect-cart');
-        const topScreen = (document.documentElement.scrollTop) - (imageEffect.height / 2);
-        const widthScreen = (window.screen.width-60) - (imageEffect.width / 2);
+        const width = 310, height = 250;
+        const topScreen = (document.documentElement.scrollTop + 45) - (height / 2);
+        const widthScreen = (window.screen.width - 35) - (width / 2);
+        console.log(width,height);
 
         gsap.timeline().to(imageEffect, {
             top: parentDiv.offsetTop,
             left: parentDiv.offsetLeft,
+            width: parentDiv.clientWidth,
             display:'block', 
             duration: 0
         })
@@ -35,6 +38,8 @@ const CollectionItem = ({ addCartItems, item}) => {
                 rotationY:360,
                 top:topScreen, 
                 left:widthScreen,
+                width:width,
+                height:height,
             },
             ease: Power1.easeIn,
             duration: 1
@@ -45,6 +50,7 @@ const CollectionItem = ({ addCartItems, item}) => {
                 display:'none', 
                 rotationX:0, 
                 rotationY:0, 
+                height: 'auto',
             },
             duration: 0
         });

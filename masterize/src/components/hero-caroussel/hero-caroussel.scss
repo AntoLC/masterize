@@ -106,10 +106,18 @@
 
                     .carousel__list_txt_txt{
                         width: 43%;
+                        -webkit-box-reflect: below 0 linear-gradient(transparent, #ffffff1f);
 
                         @media screen and (max-width: 750px){
                             display: inline-block!important;
                             vertical-align: top;
+                        }
+                        @media screen and (max-width: 565px){
+                            font-size: 20px;
+                        }
+                        @media screen and (max-width: 400px){
+                            margin-top: -32px;
+                            font-size: 23px;
                         }
                         p{
                             span{
@@ -121,13 +129,18 @@
                     img{
                         width: 250px;
                         cursor: pointer;
+                        transform: rotate(-12deg) scale(0.6);
 
                         @media screen and (max-width: 750px){
                             width: 25%;
                         }
+                        @media screen and (max-width: 565px){
+                            width: 35%;
+                            min-width: 160px;
+                        }
                     }
                     &.active img{
-                        transform: rotate(-12deg);
+                        transform: rotate(-12deg) scale(1);
                     }
                 }
 
@@ -148,6 +161,7 @@
                         position: relative;
                         transform: scale(0.1);
                         transition: all 0.8s cubic-bezier(0.68, 0.1, 0.265, 1);
+                        -webkit-box-reflect: below 0px linear-gradient(transparent, rgba(0, 0, 0, 0.3));
 
                         @media screen and (max-width: 750px){
                             display: block!important;
@@ -179,6 +193,10 @@
                 img{
                     display: inline-block;
                     width: 56%;
+
+                    @media screen and (max-width: 530px){
+                        width: 90%;
+                    }
                 }
 
                 & img{

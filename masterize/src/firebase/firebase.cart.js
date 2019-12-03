@@ -3,7 +3,6 @@ import {auth, firestore} from './firebase.utils';
 
 export const addCartAndDocuments = async (collectionKey, cartToAdd) => {
     console.debug("addCartAndDocuments",cartToAdd);
-    //console.debug("addCartAndDocuments",auth.currentUser);
     
     try {   // auth.currentUser.uid can be null
         cartToAdd.userID = auth.currentUser.uid;
@@ -16,7 +15,7 @@ export const addCartAndDocuments = async (collectionKey, cartToAdd) => {
 const getCartItemFromID = async (cartID) =>{
     const snapshotCartItem = await selectCart((query) => query.where('id', '==', cartID));
 
-    if(! snapshotCartItem) return {};
+    if(! snapshotCartItem) return {data: {qty:0}};
 
     let cartItem = {};
     snapshotCartItem.forEach(doc => {
@@ -29,13 +28,16 @@ const getCartItemFromID = async (cartID) =>{
 
 export const updateQtyCart = async (cart, qty) => {
     const cartItem = await getCartItemFromID(cart.id);
-    cartItem.data.qty = qty;
-    firestore.collection('carts').doc(cartItem.ID).set(cartItem.data);
+    if(cartItem.length){
+        cartItem.data.qty = qty;
+        firestore.collection('carts').doc(cartItem.ID).set(cartItem.data);
+    }
 };
 
 export const removeCart = async (cartID) => {
     const cartItem = await getCartItemFromID(cartID);
-    firestore.collection('carts').doc(cartItem.ID).delete();
+    if(cartItem.length)
+        firestore.collection('carts').doc(cartItem.ID).delete();
 };
 
 export const removeAllCart = async () => {

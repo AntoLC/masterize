@@ -167,16 +167,20 @@
 
 	.footer-distributed{
 		font: bold 14px sans-serif;
+		padding: 30px 20px 50px;
 	}
 
 	.footer-distributed .footer-left,
 	.footer-distributed .footer-center,
 	.footer-distributed .footer-right{
 		display: block;
-		width: fit-content;
-		margin-bottom: 40px;
+		width: auto;
+		margin-bottom: 10px;
 		text-align: left;
-		max-width: 400px;
+		background-color: #252525;
+		padding: 7px;
+		border-radius: 3px;
+		border: 1px solid #333333;
 	}
 
 	.footer-distributed .footer-center i{

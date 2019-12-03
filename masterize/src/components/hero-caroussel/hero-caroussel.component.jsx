@@ -43,14 +43,14 @@ const HeroCaroussel = () => {
             gsapAnimTxt();
 
         // Resetup the changement of image
-        // clearTimeout(timeOutChangeImage);
-        // const currentTimeout = setTimeout(() => {
-        //     const nb_item = active.slice(-1) >= 3 ? 1 : parseInt(active.slice(-1))+1;
-        //     setActive(active.slice(0, -1)+nb_item);
-        // }, 8000);
-        // setTimeOutChangeImage(currentTimeout);
+        clearTimeout(timeOutChangeImage);
+        const currentTimeout = setTimeout(() => {
+            const nb_item = active.slice(-1) >= 3 ? 1 : parseInt(active.slice(-1))+1;
+            setActive(active.slice(0, -1)+nb_item);
+        }, 8000);
+        setTimeOutChangeImage(currentTimeout);
 
-        // return () => clearTimeout(currentTimeout);
+        return () => clearTimeout(currentTimeout);
     }, [active])
 
     return (
