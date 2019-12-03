@@ -3,6 +3,7 @@ import React, {useEffect} from 'react';
 import CollectionContainer from '../../components/collections-container/collections-container.cpnt';
 import { connect } from 'react-redux';
 import { fetchCollectionsStart } from '../../redux/shop/shop.actions';
+import "./shop.style.scss";
 
 const Shop = ({match, fetchCollectionsStart}) => {
     const {category} = match.params;

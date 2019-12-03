@@ -9,11 +9,17 @@ import {
 
 
 export const addItemToCart = (cart_items, item) => {
-    const itemIndex = cart_items ? cart_items.findIndex((_item => _item.id === item.id)) : -1;
+    let itemIndex = -1;
+    try {
+        itemIndex = cart_items.findIndex((_item => _item.id === item.id));
+    }
+    catch{
+    }
+
     if(itemIndex === -1){
         const newItem = {...item, qty: 1};
 
-        const new_cart = (cart_items) 
+        const new_cart = (cart_items.length) 
             ? [...cart_items, newItem]
             : [newItem];
 

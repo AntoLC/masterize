@@ -8,14 +8,20 @@
 
 	padding: 55px 50px;
     margin-top: 50px;
-    position: relative;
+	position: relative;
+	
+	@media screen and (max-width: 1040px){
+		padding: 55px 20px;
+	}
 }
 
 .footer-distributed .footer-left,
 .footer-distributed .footer-center,
 .footer-distributed .footer-right{
 	display: inline-block;
-	vertical-align: top;
+    vertical-align: top;
+    margin: auto;
+    width: 33%;
 }
 
 /* Footer left */
@@ -167,9 +173,10 @@
 	.footer-distributed .footer-center,
 	.footer-distributed .footer-right{
 		display: block;
-		width: 100%;
+		width: fit-content;
 		margin-bottom: 40px;
-		text-align: center;
+		text-align: left;
+		max-width: 400px;
 	}
 
 	.footer-distributed .footer-center i{

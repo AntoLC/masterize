@@ -1,6 +1,10 @@
 .collections-overview {
   display: block;
   padding: 5px 20px;
+
+  /*@media screen and (max-width: 980px){
+    padding: 5px 5px;
+  }*/
 }
 
 .items {

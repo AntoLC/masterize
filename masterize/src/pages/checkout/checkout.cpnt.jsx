@@ -26,7 +26,7 @@ const CheckoutPage = ({cartItems, cartTotal}) => (
                 <span>Remove</span>
             </div>
         </div>
-        { cartItems.map(item => <CheckoutItem key={item.id} item={item}/>) }
+        { (cartItems.length) ? cartItems.map(item => <CheckoutItem key={item.id} item={item}/>) : "" }
         <div className='total'>TOTAL: ${ cartTotal }</div>
         <div className='test-warning'>
             * Please use the following test credit cart for payments *

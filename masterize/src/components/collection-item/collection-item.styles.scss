@@ -75,6 +75,10 @@
     }
   }
 
+  @media screen and (max-width: 450px){
+    width: 80vw;
+  }
+
   .collection-footer {
     width: 100%;
     height: 5%;
