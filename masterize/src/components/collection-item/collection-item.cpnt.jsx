@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { withRouter } from 'react-router-dom';
+import React from 'react';
+
 import './collection-item.styles.scss';
 import CustomButton from '../custom-button/custom-button';
 import {STYLE_INVERTED} from '../custom-button/custom-button.styles';
@@ -11,7 +11,7 @@ import { gsap } from "gsap";
 import { Power1 } from "gsap/all";
 
 
-const CollectionItem = ({ addCartItems, item, history, match}) => {
+const CollectionItem = ({ addCartItems, item}) => {
     const cart_effect = (el) => {
         const parentDiv = el.target.parentElement;
         const imageEffect = parentDiv.querySelector('.collection-item-effect-cart');
@@ -53,7 +53,7 @@ const CollectionItem = ({ addCartItems, item, history, match}) => {
 
     return (
         <div className='collection-item'>
-            <img className='collection-item-effect-cart' src={item.imageUrl} />
+            <img className='collection-item-effect-cart' src={item.imageUrl} alt="item-effect-cart"/>
             <div
                 style={{backgroundImage: `url(${item.imageUrl})`}} 
                 className='image'>
