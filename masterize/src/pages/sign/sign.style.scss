@@ -1,12 +1,26 @@
 .sign-in-and-sign-up{
-    width: 850px;
     display:flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 30px auto;
-}
 
-.sign-up, .sign-in{
-    .group{
-        margin: 25px 0;
+    @media screen and (max-width: 912px){
+        display:block;
+        padding-top: 40px;
+    }
+    
+    .sign-up, .sign-in{
+        @media screen and (max-width: 912px){
+            margin: auto;
+        }
+    
+        .group{
+            margin: 25px 0;
+        }
+    }
+    .sign-up{
+        @media screen and (max-width: 912px){
+            margin-top: 23px;
+        }
     }
 }
+

@@ -270,6 +270,10 @@
                     background: #FFC107;
                 }
 
+                &#carousel__control3.active:before{
+                    background: #F44336;
+                }
+
                 &:hover {
                     transform: scale(1.5);
                 }
