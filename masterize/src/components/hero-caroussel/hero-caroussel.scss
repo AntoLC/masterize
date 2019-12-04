@@ -39,13 +39,18 @@
                     height: 100vh;
                     img{
                         width:100vw;
-                        
                         margin: auto;
 
                         @media screen and (max-width: 750px){
                             width:auto;
                             height: 100vh;
                         }
+                        @media screen and (max-width: 750px) and (orientation:landscape){
+                            width:100vw;
+                            height: auto;
+                            min-height: 100vh;
+                        }
+                        
                     }
                 }
             }

@@ -6,9 +6,9 @@ import Video from "./img/video.mp4";
 import Laptop from "./img/laptop2.png";
 import Tablet from "./img/tablet.png";
 import Phone from "./img/phoneOboo.png";
-import Img1 from "./img/indian-1800.jpg";
-import Img2 from "./img/african-1800.jpg";
-import Img3 from "./img/asian-1800.jpg";
+import Img1 from "./img/indian-1800-opt.jpg";
+import Img2 from "./img/african-1800-opt.jpg";
+import Img3 from "./img/asian-1800-opt.jpg";
 
 import { gsap } from "gsap";
 
