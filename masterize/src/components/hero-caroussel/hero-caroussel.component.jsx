@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import "./hero-caroussel.scss";
-import PixiGame from '../pixi-game/pixiGame.component';
 
 import Video from "./img/video.mp4";
 import Laptop from "./img/laptop2.png";
